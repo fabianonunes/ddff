@@ -1,6 +1,6 @@
 # ddff
 
-## dependências
+## Dependências
 
 requisitos:
 
@@ -11,13 +11,13 @@ opcionais:
 
 * `vlc`
 
-## tabela de frequências
+## Tabela de frequências
 
 A tabela de frequências descreve os canais da faixa UHF no Brasil.
 É documentada na NBR 15608-1 (tabela 5) e está disponível nesse repositório
 no arquivo `freq.conf`.
 
-## tabela de estações (channels.conf)
+## Tabela de estações (channels.conf)
 
 A tabela de estações é uma lista com a descrição dos canais sintonizáveis de uma região.
 Ela está disponível nesse repositório sob o nome de `channels.conf` (sintonizado em Brasília em dez-2016).
@@ -28,7 +28,7 @@ Se for preciso atualizá-la, utilize o `scan`:
 scan freq.conf > nova_tabela_de_estacoes.conf
 ```
 
-## assistindo pelo VLC
+## Assistindo pelo VLC
 
 O VLC aceita como entrada uma tabela de estações. É uma boa ferramenta para testar 
 a sintonia dos canais. Basta passar o arquivo da tabela como argumento:
@@ -37,12 +37,12 @@ a sintonia dos canais. Basta passar o arquivo da tabela como argumento:
 vlc channels.conf
 ```
 
-## utilizando o stream DVB no ffmpeg
+## Do DVB para o ffmpeg
 
 Para gerar um stream dvb compatível com o `ffmpeg`, primeiro é preciso adquirir
 um `LOCK` (sintonizar o receptor).
 
-### sintonizando o receptor
+### - sintonizando o receptor
 
 Vamos considerar que na tabela de estações exista o canal 'TV SENADO  1' com a seguinte descrição:
 
@@ -74,7 +74,7 @@ variando de 4 a 8 bits (2 a 4 dígitos). Utilize essa coluna como feedback quand
 significa que haverá chuvisco digital na recepção.
 
 
-### passando a saída do receptor para o ffmpeg
+### - passando a saída do receptor para o ffmpeg
 
 Uma vez que o _lock_ foi adquirido (`FE_HAS_LOCK`) com uma recepção satisfatória (status = `1f`),
 o dispositivo `/dev/dvb/adapter0/dvr0` emitirá um stream no formato `mpegts`.
@@ -85,7 +85,7 @@ Para consumir via `ffmpeg`, passe o dispositivo como entrada (`-i`):
 ffmpeg -i /dev/dvb/adapter0/dvr0 saida.mp4 # salva o stream no arquivo saida.mp4 
 ```
 
-### read errors
+### - read errors
 
 O `ffmpeg` não aceita streams com _read errors_, portanto qualquer erro de transmissão
 (como chuviscos e queda de qualidade do sinal) pode travar seu processamento. 
@@ -97,9 +97,9 @@ dd if=/dev/dvb/adapter0/dvr0 conv=noerror | ffmpeg -i - saida.mp4
 # note que o stdin, -, foi utilizado como arquivo de entrada do ffmpeg. 
 ```
 
-## transmitindo para um rtmp
+## Transmitindo para um RTMP
 
-Para transmitir para um rtmp, passe a respectiva url como ponto de saída do ffmpeg.
+Para transmitir para um RTMP, passe a respectiva url como ponto de saída do ffmpeg.
 
 Exemplo:
 
@@ -117,7 +117,7 @@ A chave de acesso deve ser passada como primeiro argumento:
 ./ddff.sh "CHAVE_DO_STREAM"
 ```
 
-## proxy
+## Proxy
 
 O ffmpeg não vai mandar nada por um proxy HTTP. Você vai precisar de algum _proxifier_ para direcionar todo
 o fluxo http por um proxy.
