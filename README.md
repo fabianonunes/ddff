@@ -130,3 +130,12 @@ proxychains ./ddff.sh
 
 Configure o `proxychains` pelo arquivo `/etc/proxychains.conf`.
 Se sua rede proíbe o acesso a DNS externos, comente o parâmetro `proxy_dns`.
+
+## Por onde andei...
+
+* https://wiki.archlinux.org/index.php/DVB-T
+* https://www.linuxtv.org/pipermail/linux-dvb/2008-August/028394.html
+* https://wiki.gentoo.org/wiki/TV_Tuner#Recording_using_zap_and_cat.7Cdd_.28preferred_method.29
+* https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+* http://www.tannet.org.uk/using-ffmpeg-to-generate-a-transport-stream-more-details-and-how-to-add-text-overlays/
+* http://panteltje.com/panteltje/dvd/
