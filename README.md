@@ -136,6 +136,8 @@ Se sua rede proíbe o acesso a DNS externos, comente o parâmetro `proxy_dns`.
 * https://wiki.archlinux.org/index.php/DVB-T
 * https://www.linuxtv.org/pipermail/linux-dvb/2008-August/028394.html
 * https://wiki.gentoo.org/wiki/TV_Tuner#Recording_using_zap_and_cat.7Cdd_.28preferred_method.29
-* https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 * http://www.tannet.org.uk/using-ffmpeg-to-generate-a-transport-stream-more-details-and-how-to-add-text-overlays/
 * http://panteltje.com/panteltje/dvd/
+* http://www.waveguide.se/?article=creating-dvb-t-compatible-mpeg2-streams-using-ffmpeg
+* https://www.linuxtv.org/wiki/index.php/Testing_your_DVB_device
+* https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
