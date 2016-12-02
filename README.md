@@ -14,13 +14,13 @@ opcionais:
 ## Tabela de frequências
 
 A tabela de frequências descreve os canais da faixa UHF no Brasil.
-É documentada na NBR 15608-1 (tabela 5) e está disponível nesse repositório
+É documentada pela NBR 15608-1 (tabela 5) e está disponível nesse repositório
 no arquivo `freq.conf`.
 
 ## Tabela de estações (channels.conf)
 
 A tabela de estações é uma lista com a descrição dos canais sintonizáveis de uma região.
-Ela está disponível nesse repositório sob o nome de `channels.conf` (sintonizado em Brasília em dez-2016).
+Está disponível nesse repositório sob o nome de `channels.conf` (sintonizado em Brasília em dez-2016).
 
 Se for preciso atualizá-la, utilize o `scan`:
 
@@ -31,7 +31,7 @@ scan freq.conf > nova_tabela_de_estacoes.conf
 ## Assistindo pelo VLC
 
 O VLC aceita como entrada uma tabela de estações. É uma boa ferramenta para testar 
-a sintonia dos canais. Basta passar o arquivo da tabela como argumento:
+visualmente a sintonia dos canais. Basta passar o arquivo da tabela como argumento:
 
 ```bash
 vlc channels.conf
@@ -39,10 +39,10 @@ vlc channels.conf
 
 ## Do DVB para o ffmpeg
 
+### - sintonizando o receptor
+
 Para gerar um stream dvb compatível com o `ffmpeg`, primeiro é preciso adquirir
 um `LOCK` (sintonizar o receptor).
-
-### - sintonizando o receptor
 
 Vamos considerar que na tabela de estações exista o canal 'TV SENADO  1' com a seguinte descrição:
 
@@ -62,21 +62,24 @@ status 1f | signal 9337 | snr 00ba | ber 00000000 | unc 00000000 | FE_HAS_LOCK
 # (...)
 ```
 
-O receptor continuará sintonizado na frequência desejada até que o comando tzap seja interrompido.
+O receptor continuará sintonizado na frequência desejada até que o comando `tzap` seja interrompido.
 
 A saída do comando `tzap` indica a saúde do sinal de TV:
 
 * `status` informa se ocorrem satisfatoriamente a recepção e a decodificação de um stream de vídeo.
-O único valor aceitável é `1f`.
-* `snr` (_sound/noise ratio_) informa a força do sinal em hex. Sua escala depende do dispositivo,
-variando de 4 a 8 bits (2 a 4 dígitos). Utilize essa coluna como feedback quando for posicionar a antena.
+O único valor aceitável é `1f`
+(veja a [tabela bitmap](https://github.com/torvalds/linux/blob/master/include/uapi/linux/dvb/frontend.h#L119)
+para intepretar outros resultados).
+* `snr` (_sound/noise ratio_) informa a força do sinal em hexadecimal. Sua escala depende do dispositivo,
+variando de 4 a 8 bits (2 a 4 dígitos). Não é necessário que o valor seja alto para uma boa
+transmissão, desde que se mantenha estável. Utilize essa coluna como feedback quando for posicionar a antena.
 * `unc` (_uncorrected block errors_) reporta a qualidade do sinal. Qualquer valor diferente de 0
 significa que haverá chuvisco digital na recepção.
 
 
 ### - passando a saída do receptor para o ffmpeg
 
-Uma vez que o _lock_ foi adquirido (`FE_HAS_LOCK`) com uma recepção satisfatória (status = `1f`),
+Uma vez que o _lock_ foi adquirido (`FE_HAS_LOCK`) com uma recepção satisfatória (status == `1f`),
 o dispositivo `/dev/dvb/adapter0/dvr0` emitirá um stream no formato `mpegts`.
 
 Para consumir via `ffmpeg`, passe o dispositivo como entrada (`-i`):
