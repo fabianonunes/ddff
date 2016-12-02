@@ -66,7 +66,7 @@ O receptor continuará sintonizado na frequência desejada até que o comando tz
 
 A saída do comando `tzap` indica a saúde do sinal de TV:
 
-* `status` informa se ocorre a recepção e a decodificação satisfatórias de um stream de vídeo.
+* `status` informa se ocorrem satisfatoriamente a recepção e a decodificação de um stream de vídeo.
 O único valor aceitável é `1f`.
 * `snr` (_sound/noise ratio_) informa a força do sinal em hex. Sua escala depende do dispositivo,
 variando de 4 a 8 bits (2 a 4 dígitos). Utilize essa coluna como feedback quando for posicionar a antena.
