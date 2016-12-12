@@ -128,7 +128,7 @@ o fluxo http por um proxy.
 No Linux, você pode usar o `proxychains`:
 
 ```bash
-proxychains ./ddff.sh
+proxychains ./ddff.sh "CHAVE_DO_STREAM"
 ``` 
 
 Configure o `proxychains` pelo arquivo `/etc/proxychains.conf`.
