@@ -50,10 +50,11 @@ Vamos considerar que na tabela de estações exista o canal 'TV SENADO  1' com a
 TV SENADO  1:689142857:INVERSION_AUTO:BANDWIDTH_6_MHZ:FEC_AUTO:FEC_AUTO:QAM_AUTO:TRANSMISSION_MODE_AUTO:GUARD_INTERVAL_AUTO:HIERARCHY_NONE:769:513:16544
 ```
 
-Para sintonizá-lo, utilize o `tzap`:
+Para sintonizá-lo, utilize o `tzap` :
 
 ```bash 
-$ tzap 'tv senado  1' -c channels.conf -r # o nome do canal é insensível ao caso
+# o nome do canal é insensível ao caso
+$ tzap 'tv senado  1' -r -c channels.conf
 status 1f | signal 9341 | snr 00a9 | ber 00000000 | unc 00000000 | FE_HAS_LOCK
 status 1f | signal 92e6 | snr 00b1 | ber 00000000 | unc 00000000 | FE_HAS_LOCK
 status 1f | signal 92fb | snr 00bc | ber 00000000 | unc 00000000 | FE_HAS_LOCK
@@ -75,6 +76,9 @@ variando de 4 a 8 bits (2 a 4 dígitos). Não é necessário que o valor seja al
 transmissão, desde que se mantenha estável. Utilize essa coluna como feedback quando for posicionar a antena.
 * `unc` (_uncorrected block errors_) reporta a qualidade do sinal. Qualquer valor diferente de 0
 significa que haverá chuvisco digital na recepção.
+
+Em algumas versões do tzap, o parâmetro `-r` é obrigatório para a liberação do
+dispositivo `/dev/dvb/adapter0/dvr0` para gravação.
 
 
 ### - passando a saída do receptor para o ffmpeg
@@ -144,3 +148,4 @@ Se sua rede proíbe o acesso a DNS externos, comente o parâmetro `proxy_dns`.
 * http://www.waveguide.se/?article=creating-dvb-t-compatible-mpeg2-streams-using-ffmpeg
 * https://www.linuxtv.org/wiki/index.php/Testing_your_DVB_device
 * https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+* http://linux-dvb.linuxtv.narkive.com/dvrxCE9Q/nova-t-stick-problem
