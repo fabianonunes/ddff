@@ -53,7 +53,7 @@ TV SENADO  1:689142857:INVERSION_AUTO:BANDWIDTH_6_MHZ:FEC_AUTO:FEC_AUTO:QAM_AUTO
 Para sintonizá-lo, utilize o `tzap`:
 
 ```bash 
-$ tzap 'tv senado  1' -c channels.conf # o nome do canal é insensível ao caso
+$ tzap 'tv senado  1' -c channels.conf -r # o nome do canal é insensível ao caso
 status 1f | signal 9341 | snr 00a9 | ber 00000000 | unc 00000000 | FE_HAS_LOCK
 status 1f | signal 92e6 | snr 00b1 | ber 00000000 | unc 00000000 | FE_HAS_LOCK
 status 1f | signal 92fb | snr 00bc | ber 00000000 | unc 00000000 | FE_HAS_LOCK
