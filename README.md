@@ -124,6 +124,15 @@ A chave de acesso deve ser passada como primeiro argumento:
 ./ddff.sh "CHAVE_DO_STREAM"
 ```
 
+## Múltiplos streams
+
+Para enviar o mesmo stream para múltiplos processos simultaneamente, utilize o `pee` do pacote `moreutils`.
+
+```bash
+dd if=/dev/dvb/adapter0/dvr0 conv=noerror | ./transcode.sh | pee "./ff.sh 'chave1'" "./ff.sh 'chave2'"
+```
+
+
 ## Proxy
 
 O ffmpeg não vai mandar nada por um proxy HTTP. Você vai precisar de algum _proxifier_ para direcionar todo
