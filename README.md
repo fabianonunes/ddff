@@ -69,7 +69,7 @@ A saída do comando `tzap` indica a saúde do sinal de TV:
 
 * `status` informa se ocorrem satisfatoriamente a recepção e a decodificação de um stream de vídeo.
 O único valor aceitável é `1f`
-(veja a [tabela bitmap](https://github.com/torvalds/linux/blob/master/include/uapi/linux/dvb/frontend.h#L119)
+(veja a [tabela bitmap](https://github.com/torvalds/linux/blob/f9d79126195374c285035777b9d6abd24ceba363/include/uapi/linux/dvb/frontend.h#L252)
 para intepretar outros resultados).
 * `snr` (_sound/noise ratio_) informa a força do sinal em hexadecimal. Sua escala depende do dispositivo,
 variando de 4 a 8 bits (2 a 4 dígitos). Não é necessário que o valor seja alto para uma boa
